@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</html>
+<body>
+
+<html lang="en">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+  <body>
+
+<form method='POST' action='index'>    
+  <div class="container mt-5">
+    <div class="row">
+     <div class="col-md-6">
+       <div class="header_section">
+      <div class="containt_main"> 
+       
+           <h5> 
+            {% if user.is_authenticated %}
+            <a class="" href="logout">logout</a>
+            {% else %}
+            <a class="" href="login">login</a>
+            {% endif %}
+           </h5>
+          </div>
+          
+           
+          </div>
+
+         
+    {% if user.is_authenticated %}
+
+<h1>Welcome; {{user.username}} to our web page.</h1>
+{% else %}
+<h1>Welcome to our web page.</h1>
+{% endif %}
+<p>Register <a href="register">here</a> to enjoy amazing services.</p>
+</div>
+</div>
+</div>  
+</form>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+
+<div>
+    <navigation>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link" href="index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </navigation>
+</div>
+
+ <div class="container-fluid">
+    <div class="row">
+      <!-- Left Section -->
+      <div class="col-sm-12 col-md-4">
+        <h5>Welcome Wisoft</h1>
+        <p>This is a sample HTML file.</p>
+      </div>
+      
+      <!-- Middle Section -->
+      <div class="col-sm-12 col-md-4">
+        <h5>Welcome Wisoft this is the second edition page</h1>
+        <p>This is a sample HTML file.</p>
+      </div>
+      
+      <!-- Right Section -->
+      <div class="col-sm-12 col-md-4">
+
+        <img src="{% static 'pro.jpg' %}" alt="My Image" class="img-fluid"> 
+
+        
+        <h5>Welcome Wisoft to the trhird party state</h1>
+        <p>This is a sample HTML file.</p>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+       
+   
+
+    
+
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        background: linear-gradient(to left, #58034dff, #f11c87ff);
+        color: #300530ff;
+    }
+    .img-fluid {
+        max-width: 100%;
+        
+        height: auto;
+    }
+    </style>
+</html>
