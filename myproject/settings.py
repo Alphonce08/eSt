@@ -40,6 +40,18 @@ INSTALLED_APPS = [
     'myapp',
 ]
 
+# #Local
+# 'account',
+
+# AUTH_USER_MODEL = 'customuser.CustomUser'
+
+# DJANGO_SUPERUSER_PASSWORD = 'Abcd@1234'
+# DJANGO_SUPERUSER_USERNAME = 'admin'
+# DJANGO_SUPERUSER_EMAIL = 'xxx'
+
+
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
