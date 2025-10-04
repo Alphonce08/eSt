@@ -27,14 +27,16 @@
        <div class="header_section">
       <div class="containt_main"> 
        
-           <h5> 
+           {% comment %} <h5> 
             {% if user.is_authenticated %}
             <a class="" href="logout">logout</a>
             {% else %}
             <a class="" href="login">login</a>
             {% endif %}
            </h5>
-          </div>
+          </div> {% endcomment %}
+
+
           
            
           </div>
@@ -46,10 +48,15 @@
 {% else %}
 <h1>Welcome to our web page.</h1>
 {% endif %}
-<p>Register <a href="register">here</a> to enjoy amazing services.</p>
-</div>
-</div>
-</div>  
+<p>No Account Register <a href="register">here</a> to enjoy amazing services.</p>
+<p>Click <a href="login">here</a> to login your Account.</p>
+
+       </div>
+     </div>
+    </div>
+   </div>
+  
+
 
 
 </html>
@@ -92,7 +99,7 @@
     </div>
   </div>
 
-
+  </form>
 </body>
 
        

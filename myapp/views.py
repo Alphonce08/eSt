@@ -85,11 +85,11 @@ def login(request):
             messages.info(request, 'Invalid username or password')
         return redirect('login')  # Redirect to a success page
     else:
-     return render(request, 'index.html')
+     return render(request, 'login.html')
 
      def logout(request):
          auth.logout(request)
-         return redirect('index')
+         return redirect('login')
 
 
 
