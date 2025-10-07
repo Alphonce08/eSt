@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</html>
+<body>
+  <header_section>
+
+  <div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+
+    <div class="header_section">
+      <div class="container">
+        <div class="containt_main">
+          <div id="mySidenav" class="sidenav">
+
+            <a href="index">Home</a>
+            <a href="about">About</a>
+            <a href="services">Services</a>
+            <a href="contact">Contact</a>
+            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header_section>
+
+
+
+
+<form method='POST' action='index'>    
+  <div class="container mt-5">
+    <div class="row">
+     <div class="col-md-6">
+       <div class="header_section">
+      <div class="containt_main"> 
+       
+           {% comment %} <h5> 
+            {% if user.is_authenticated %}
+            <a class="" href="logout">logout</a>
+            {% else %}
+            <a class="" href="login">login</a>
+            {% endif %}
+           </h5>
+          </div> {% endcomment %}
+
+
+          
+           
+          </div>
+
+         
+    {% if user.is_authenticated %}
+
+<h1>Welcome; {{user.username}} to our web page.</h1>
+{% else %}
+<h1>Welcome to our web page.</h1>
+{% endif %}
+<p>No Account Register <a href="register">here</a> to enjoy amazing services.</p>
+<p>Click <a href="login">here</a> to login your Account.</p>
+
+       </div>
+     </div>
+    </div>
+   </div>
+  
+
+    
+
+
+ <div class="container-fluid">
+    <div class="row">
+      <!-- Left Section -->
+      <div class="col-sm-12 col-md-4">
+        <h5>Welcome Wisoft</h1>
+        <p>This is a sample HTML file.</p>
+      </div>
+      
+      <!-- Middle Section -->
+      <div class="col-sm-12 col-md-4">
+        <h5>Welcome Wisoft this is the second edition page</h1>
+        <p>This is a sample HTML file.</p>
+      </div>
+      
+      <!-- Right Section -->
+      <div class="col-sm-12 col-md-4">
+        
+
+        <img src="{% static 'pro.jpg' %}" alt="My Image" class="img-fluid"> 
+
+        
+        <h5>Welcome Wisoft to the trhird party state</h1>
+        <p>This is a sample HTML file.</p>
+      </div>
+    </div>
+  </div>
+
+  </form>
+</body>
+
+       
+   
+</head>
+
+</html>
+<style>
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 20px;
+        background: linear-gradient(to left, #63074463, #cf10cfff);
+        color: #801180ff;
+    }
+    
+    
+
+    {% comment %} /* Container */ {% endcomment %}
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    {% comment %} /* Button */ {% endcomment %}
+    .dropbtn {
+      font-size: 26px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: #cf10cfff;
+      color: darckcyan;
+      font-weight: bold;
+    }
+
+    {% comment %} /* Dropdown content (hidden by default) */ {% endcomment %}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+    }
+
+    {% comment %} /* Links inside dropdown */ {% endcomment %}
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    {% comment %} /* Hover effects */ {% endcomment %}
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    {% comment %} /* Show dropdown on hover */ {% endcomment %}
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    {% comment %} /* Change button color on hover */ {% endcomment %}
+    .dropdown:hover .dropbtn {
+      background-color: #150453ff;
+    }
+    .header_section {
+        text-align: none;
+        margin-bottom: 20px;
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        link-decoration: none;
+        
+    }
+
+
+    </style>
+</html>
