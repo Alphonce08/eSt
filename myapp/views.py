@@ -13,6 +13,9 @@ from django.contrib.auth.models import User, auth
 def index(request):
     return render(request, 'index.html')
 
+def base(request):
+    return render(request, 'base.html')
+
 
 def register(request):
     if request.method == 'POST':
