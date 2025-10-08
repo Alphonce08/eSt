@@ -16,6 +16,13 @@ def index(request):
 def base(request):
     return render(request, 'base.html')
 
+def contact(request):
+    return render(request, 'contact.html')
+def about(request):
+    return render(request, 'about.html')
+def footer(request):
+    return render(request, 'footer.html')
+
 
 def register(request):
     if request.method == 'POST':

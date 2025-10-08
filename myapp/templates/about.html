@@ -1,79 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dropdown Menu</title>
-  <style>
-    /* Basic styling */
-    body {
-      font-family: Arial, sans-serif;
-      padding: 50px;
-    }
+{% load static %}
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <a href="/">WiSoft</a>
+    </div>
 
-    /* Container */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+    <!-- Hamburger icon (shows only on mobile) -->
+    <div class="menu-toggle" id="menu-toggle">
+      &#9776;
+    </div>
 
-    /* Button */
-    .dropbtn {
-      background-color: #3498db;
-      color: white;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+    <!-- Navigation menu -->
+    <nav class="navbar" id="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
 
-    /* Dropdown content (hidden by default) */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 5px;
-    }
-
-    /* Links inside dropdown */
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-
-    /* Hover effects */
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-
-    /* Show dropdown on hover */
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    /* Change button color on hover */
-    .dropdown:hover .dropbtn {
-      background-color: #2980b9;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="dropdown">
-    <button class="dropbtn">Menu</button>
-    <div class="dropdown-content">
-      <a href="#">Home</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Contact</a>
+    <div class="header-right">
+      <a href="/login" class="btn">Login</a>
+      <a href="/register" class="btn btn-primary">Sign Up</a>
     </div>
   </div>
+</header>
 
-</body>
-</html>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navbar = document.getElementById('navbar');
+
+  // Toggle menu visibility on mobile
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+  });
+</script>
+<!-- CSS for styling the header -->
+
+
+
+<style>
+  header {
+  background-color: #111;
+  color: #fff;
+  padding: 15px 0;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  color: #f4a261;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar ul li {
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #f4a261;
+}
+
+.header-right .btn {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header-right .btn {
+  background-color: transparent;
+  color: #f4a261;
+  border: 1px solid #f4a261;
+}
+
+.header-right .btn:hover {
+  background-color: #f4a261;
+  color: #111;
+}
+
+.header-right .btn-primary {
+  background-color: #f4a261;
+  color: #111;
+}
+
+.header-right .btn-primary:hover {
+  background-color: #ffb86b;
+}
+</style>
