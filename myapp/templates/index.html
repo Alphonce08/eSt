@@ -6,33 +6,86 @@
 {% load static %}
 
 
+<body>
 
-  
-         
-    {% if user.is_authenticated %}
 
-<h1>Welcome; {{user.username}} to our web page.</h1>
-{% else %}
-<h1>Welcome to our web page.</h1>
-{% endif %}
-<p>No Account Register <a href="register">here</a> to enjoy amazing services.</p>
-<p>Click <a href="login">here</a> to login your Account.</p>
+  <div class="container-fluid">
+    <div class="row">
 
-       </div>
-     </div>
+      <div class="col-sm-12 col-md-3">
+        <img src="{% static 'images/aye.jpg' %}" alt="Logo" class="img-fluid">
+        </div>
+
+      <div class="col-sm-12 col-md-5">
+        <h1>Welcome to my page. </h1> 
+        <h4>Enjoy amazing services.</h4>
+        <p>WiSoft is a leading provider of innovative software solutions, dedicated to enhancing your digital experience.</p>
+        <p>We offer cutting-edge web development services to create stunning and responsive websites.</p>
+        <p>Our team develops user-friendly mobile applications for both iOS and Android platforms.</p>
+        <p>Boost your online presence with our comprehensive digital marketing strategies.</p>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <h3>Key Responsibilities</h3>
+        <p>At WiSoft, we are committed to delivering high-quality software solutions that meet our clients' needs. Our key responsibilities include:</p>
+        <p> <bold>Client Consultation:</bold> Understanding client requirements and providing expert advice on software solutions.</p>
+        <p> <bold>Project Management:</bold> Planning, executing, and overseeing software
+        <p> <bold>Design and Development:</bold> Create software solutions by designing and writing code, often working on specific aspects of a larger project.</p>
+        </div>
+      </div>
+  </div>
+<br>
+<br>
+
+   
+
+    <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-12 col-md-3">
+        <h3>Web Development</h3>
+        <p>We offer cutting-edge web development services to create stunning and responsive websites.</p>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <h3>Mobile App Development</h3>
+        <p>Our team develops user-friendly mobile applications for both iOS and Android platforms.</p>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <h3>Digital Marketing</h3>
+        <p>Boost your online presence with our comprehensive digital marketing strategies.</p>
+      </div>
+
+      <div class="col-sm-12 col-md-3">
+        <h3>Cloud Solutions</h3>
+        <p>Leverage the power of the cloud with our scalable and secure cloud computing services.</p>
     </div>
-   </div>
+  </div>
+  </div>
+
+
   
+<br><br>
+  <div class="container-fluid">
+    <div class="row">
 
-    
-
+      <div class="col-sm-12 col-md-12 justify-content-center">
+        <h3>Introduction Video</h3>
+        <p>Watch my video to more WiSoft an services providing.</p>
+   <video width="550" controls>
+  <source src="{% static 'video.mp4' %}" type="video/mp4">
+   </video>
+      </div>
+      </div>
+  </div>
+<br><br>
 
  <div class="container-fluid">
     <div class="row">
       <!-- Left Section -->
       <div class="col-sm-12 col-md-4">
-        <h5>Welcome Wisoft</h1>
-        <p>This is a sample HTML file.</p>
+         <h5>Welcome Wisoft</h1>
+        <p>This is a sample HTML file.</p> 
       </div>
       
       <!-- Middle Section -->
@@ -43,15 +96,35 @@
       
       <!-- Right Section -->
       <div class="col-sm-12 col-md-4">
-        
-
-        <img src="{% static 'pro.jpg' %}" alt="My Image" class="img-fluid"> 
-
-        
+  
         <h5>Welcome Wisoft to the trhird party state</h1>
         <p>This is a sample HTML file.</p>
       </div>
     </div>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="/"><i class="fab fa-instagram"></i> Instagram</a></li>
+      <li><a href="/"><i class="fab fa-facebook"></i> Facebook</a></li>
+      <li><a href="/"><i class="fab fa-twitter"></i> Twitter</a></li>
+      <li><a href="/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+    </ul>
+  </nav>
+  <br><br>
+
+    <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <h3>Ask Question</h3>
+          <button onclick="askUser()">Click to Answer</button>
+    <script>
+    function askUser() {
+      let name = prompt("What is your name?");
+      alert("Hello, " + name + "! Nice to meet you.");
+    }
+    </script>
+  
+      </div>
   </div>
 
   </form>
@@ -74,6 +147,17 @@
         background: linear-gradient(to left, #63074463, #cf10cfff);
         color: #801180ff;
     }
+    h1, h3, h4, h5 {
+        color: black;
+        text-align: center;
+    }
+    p {
+        font-size: 16px;
+        color: #0f0f0f8f;
+    }
+    bold {
+        font-weight: bold;
+    }
     
     
 
@@ -82,6 +166,15 @@
       position: relative;
       display: inline-block;
     }
+    <!-- images -->
+    .img-fluid {
+      size: 50px;
+      border-radius: 1%;
+      display: block;
+      margin-top: 50px;
+    }
+
+    {% comment %} /* Dropdown Button */ {% endcomment %}
 
     {% comment %} /* Button */ {% endcomment %}
     .dropbtn {
@@ -128,14 +221,4 @@
     }
     .header_section {
         text-align: none;
-        margin-bottom: 20px;
-        text-decoration: none;
-        font-size: 20px;
-        color: black;
-        link-decoration: none;
-        
-    }
-
-
-    </style>
-</html>
+        margin-bottom:
