@@ -23,10 +23,20 @@
               <input type="text" class="form-control" id="username" name="username" required>
             </div>
             <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="Email" name="Email" required>
+            </div>
+            <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control" id="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
+            <div class="mt-3">
+              <div class="d-flex justify-content-between">
+              <p>Forget Password?</p>
+              </div>
+              </div>
+
           </form>
           {% if error %}
           <div class="alert alert-danger mt-3">{{ error }}</div>
@@ -42,8 +52,7 @@
 
   <style>
       body {
-          background: linear-gradient(to right, #63074463, #cf10cfff);
-          color: #801180ff;
+          background: linear-gradient; white, (#1b0c28, #300b26);
           font-family: Arial, sans-serif;
           margin: 60px;
       }
@@ -60,3 +69,8 @@
           text-align: center;
 
       }
+      .mb-3 d-flex justify-content-between {
+          text-decoration: none;
+          padding : 10px;
+      }
+  </style>

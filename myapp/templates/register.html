@@ -4,25 +4,51 @@
 {% load static %}
 
 <body>
-
-    <h1>Register Here</h1>
-    <h4>Please fill in this form to create an account.</h4>
-    <form method="post">
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method="POST">
         {% csrf_token %}
-        <div class="col-md-3">
-            <label for="username" class="form-label">Username</label>
-            <input type="username" class="form-control" id="username" name="username" required>
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="text" id="username" name="username" required>
         </div>
-        <div class="col-md-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" required>
         </div>
-        <div class="col-md-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+
+
+        <div class="mb-3">
+            <label for="password1" class="form-label">Password:</label>
+            <input type="password" id="password1" name="password1" required>
         </div>
-        
-        <button type="submit" class="btn btn-primary">Register</button>
+
+
+        <div class="mb-3">
+            <label for="password2" class="form-label">Confirm Password:</label>
+            <input type="password" id="password2" name="password2" required>
+        </div>
+
+        <div class="mb-3">
+        <button type="submit" class="btn-primary">Register</button>
+        </div>
+    </form>
+</body>
+</html>
+
         
 </body>
 </html>
@@ -30,14 +56,16 @@
 {% include 'footer.html' %}
 
 <style>
-    body {
-        background: linear-gradient(to right, #cf2178ff, #a31478ff, #8a0869ff);
+     body {
+        background: linear-gradient; white, (#1b0c28, #300b26);
         font-family: Arial, sans-serif;
         margin: 60px;
+    
     }
+     
     .form-label {
-        margin-top: 10px;
-        margin-left: 20px;
+        padding-top: 10px;
+        margin-left: 230px;
     }
     .btn {
         margin-top: 35px;

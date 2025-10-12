@@ -146,6 +146,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'wisoft33@gmail.com'
-EMAIL_HOST_PASSWORD = 'Abcd@1234'
+EMAIL_HOST_PASSWORD = 'Wisoft@123'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # You can also set other email settings as needed

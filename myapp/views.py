@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Register
-import random
+from .models import User
 from django.core.mail import send_mail
+from .models import EmailOTP
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.models import User, auth
-
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
@@ -26,28 +26,34 @@ def footer(request):
 
 def register(request):
     if request.method == 'POST':
-        
-        email = request.POST.get['email']
-        password = request.POST.get['password']
-        confirmpassword = request.POST.get['confirmpassword']
-        if password == confirmpassword:
-            if User.objects.filter(username=username).exists():
-                messages.info(request, 'Username already taken')
-                return redirect('register')
-            elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Email already taken')
-                return redirect('register')
-            else:
-                User = User.objects.create(username=username, email=email, password=password)
-                user.save()
-                print('user created')
-                return redirect('login')
-                
-        else:
-            messages.info(request, 'Password not matching')
-            return redirect('register')
+        form = User(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False) 
+            user.is_active = False  # Deactivate account untill verified
+            user.set_password(form.cleaned_data['password'])  # Hash the password
+            user.save()
+
+            otp_entry = EmailOTP.objects.create(user=user)
+            otp = otp_entry.generate_otp()
+            # Send OTP to user's email
+
+            send_mail(
+                'Your Email Verification Code',
+                f'Your OTP code is {otp}',
+                'wisoft33@gmail.com', # From email
+                [user.email],
+                fail_silently=False,
+            )
+
+            messages.info(request, "We sent an OTP to your email. Please verify.")
+            return redirect('verify_otp')
     else:
-     return render(request, 'register.html')
+        form = User()
+    return render(request, 'register.html', {'form': form})
+
+
+
+
 
 
 # def register(request):
@@ -84,27 +90,18 @@ def register(request):
            
 #     return render(request, 'register.html', {'form': form})
 def login(request):
-    if request.POST.get == "POST":
-        username.request.get == ['username']
-        password.request.get == ['password']
-        user = Register.objects.filter(username=username, password=password).first()
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('login')
+            return redirect('index')  # Redirect to a success page.
         else:
-            messages.info(request, 'Invalid username or password')
-        return redirect('login')  # Redirect to a success page
-    else:
-     return render(request, 'login.html')
-
-     def logout(request):
-         auth.logout(request)
-         return redirect('login')
-
-
-
-
-
+            messages.error(request, 'Invalid username or password.')
+            return redirect('login')  # Redirect back to login page.
+    return render(request, 'login.html')
 
         
     
