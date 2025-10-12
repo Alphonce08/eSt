@@ -1,23 +1,25 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .models import User
-from django.core.mail import send_mail
-from .models import EmailOTP
-from django.contrib import messages
-from django.conf import settings
-from django.contrib.auth.models import User, auth
-from django.contrib.auth import authenticate, login
 
-# Create your views here.
+
+
+
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login as auth_login
+from django.conf import settings
+from .models import EmailOTP
+from .forms import RegisterForm  # ✅ import the form
 
 def index(request):
     return render(request, 'index.html')
 
 def base(request):
     return render(request, 'base.html')
-
 def contact(request):
     return render(request, 'contact.html')
+
 def about(request):
     return render(request, 'about.html')
 def footer(request):
@@ -26,34 +28,57 @@ def footer(request):
 
 def register(request):
     if request.method == 'POST':
-        form = User(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False) 
-            user.is_active = False  # Deactivate account untill verified
-            user.set_password(form.cleaned_data['password'])  # Hash the password
+            user = form.save(commit=False)
+            user.is_active = False  # Deactivate account until verified
+            user.set_password(form.cleaned_data['password'])
             user.save()
-
-            otp_entry = EmailOTP.objects.create(user=user)
-            otp = otp_entry.generate_otp()
-            # Send OTP to user's email
-
-            send_mail(
-                'Your Email Verification Code',
-                f'Your OTP code is {otp}',
-                'wisoft33@gmail.com', # From email
-                [user.email],
-                fail_silently=False,
-            )
-
-            messages.info(request, "We sent an OTP to your email. Please verify.")
             return redirect('verify_otp')
+        else:
+            messages.error(request, "Please correct the errors below.")
     else:
-        form = User()
+        form = RegisterForm()
+
     return render(request, 'register.html', {'form': form})
 
+def verify_otp(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        otp_input = request.POST.get('otp')
+
+        try:
+            user = User.objects.get(username=username)
+            otp_entry = EmailOTP.objects.get(user=user)
+
+            if otp_entry.otp == otp_input:
+                user.is_active = True
+                user.save()
+                otp_entry.delete()  # OTP is used, delete it
+                messages.success(request, "Email verified successfully! You can now log in.")
+                return redirect('login')
+            else:
+                messages.error(request, "Invalid OTP. Please try again.")
+        except User.DoesNotExist:
+            messages.error(request, "User does not exist.")
+        except EmailOTP.DoesNotExist:
+            messages.error(request, "No OTP found for this user. Please register again.")
 
 
+        otp_entry = EmailOTP.objects.create(user=user)
+        otp = otp_entry.generate_otp()
 
+        send_mail(
+            'Your OTP Code',
+            f'Hello {user.username},\n\nYour OTP code is: {otp}\n\nThank you!',
+            settings.EMAIL_HOST_USER,
+            [user.email],
+            fail_silently=False,
+        )
+    
+       
+
+    return render(request, 'verify_otp.html')
 
 
 # def register(request):
