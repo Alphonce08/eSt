@@ -1,39 +1,100 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Project</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-</html>
-<body>
-    <header>
-  <div class="contact">
-
+<DOCTYPE
+  html>
+  {% load static %}
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verify Here</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2 class="mb-4">Verify Your Email</h2>
+          <form method="POST" action="">
+            {% csrf_token %}
+    <div class="contact">
     <div class="email">
     <p>OTP Verification</p>
     <input type="text" name="otp" placeholder="Enter OTP" required>
-    </div>
+    </div> <br>
     
 
     <div class="submit">
-    <button type="submit" class="btn-primary">Verify</button>
+    <button type="submit" class="btn btn-primary">Verify</button>
     </div>
   </div>
   
     
 
   
-</header>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
 
+<style>
+/* Center the login box */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;        /* full viewport height */
+  background: #e9ecef;  /* light gray background */
+}
 
-</body>
+/* Box styling */
+.login-container {
+  width: 300px;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+}
 
-       
-   
-</head>
+/* Text and inputs */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-</html>
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/h2 {
+  text: green;
+}
+
+button:hover {
+  background: #0056b3;
+}
+</style>

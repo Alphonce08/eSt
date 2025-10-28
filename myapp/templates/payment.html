@@ -1,0 +1,130 @@
+<div class="login-wrapper" aria-live="polite">
+  <div class="login-container" role="form" aria-labelledby="loginTitle">
+    <h2 id="loginTitle">Log in</h2>
+
+    <form id="loginForm" autocomplete="on">
+      <div class="input-group">
+        <label class="sr-only" for="email">Email or phone</label>
+        <input id="email" name="email" type="text" placeholder="Email or phone" required>
+      </div>
+
+      <div class="input-group">
+        <label class="sr-only" for="pass">Password</label>
+        <input id="pass" name="password" type="password" placeholder="Password" required>
+      </div>
+
+      <button type="submit" class="fb-btn">Log In</button>
+
+      <div class="links-row">
+        <a href="#" class="forgot">Forgotten password?</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<style>
+    /* Center wrapper (full-viewport) */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(#f0f2f5, #f0f2f5); /* subtle fb-like bg */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Container keeps things compact (not full page) */
+.login-container {
+  width: 360px;               /* same approximate width as Facebook form */
+  padding: 28px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* Title */
+.login-container h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  color: #1c1e21;
+  font-weight: 600;
+}
+
+/* Remove visible labels but keep them for screen readers */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Inputs */
+.input-group {
+  margin-bottom: 12px;
+}
+
+.input-group input {
+  width: 100%;
+  height: 44px;                     /* tall input */
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #dddfe2;        /* light subtle border */
+  background: #fff;
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.03);
+  transition: box-shadow .12s ease, border-color .12s ease;
+  outline: none;
+  color: #1c1e21;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Placeholder style */
+.input-group input::placeholder {
+  color: #8b9aa5;
+  opacity: 1;
+}
+
+/* Focus / active look */
+.input-group input:focus {
+  border-color: #ccd7ee;
+  box-shadow: 0 0 0 3px rgba(24,119,242,0.08); /* faint fb-blue ring */
+}
+
+/* Facebook-like primary button */
+.fb-btn {
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(#1877f2, #166fe5); /* fb blue */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+  transition: background .12s ease, transform .06s ease;
+}
+
+.fb-btn:active { transform: translateY(1px); }
+.fb-btn:hover { background: linear-gradient(#1a79f9, #166fe5); }
+
+/* Small link row */
+.links-row {
+  margin-top: 12px;
+}
+.links-row .forgot {
+  color: #1877f2;
+  text-decoration: none;
+  font-size: 13px;
+}
+.links-row .forgot:hover { text-decoration: underline; }
+
+/* Responsive tweak for small screens */
+@media (max-width: 420px) {
+  .login-container { width: calc(100% - 32px); padding: 20px; }
+}
+</style>

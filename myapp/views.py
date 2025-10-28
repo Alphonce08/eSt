@@ -18,8 +18,15 @@ def contact(request):
 
 def about(request):
     return render(request, 'about.html')
+
 def footer(request):
     return render(request, 'footer.html')
+
+def payment(request):
+    return render(request, 'payment.html')
+
+def forgot_password(request):
+    return render(request, 'forgot_password.html')
 
 def register(request):
     if request.method == 'POST':
@@ -40,18 +47,15 @@ def register(request):
 
      
 
-def send_otp_email(user):
-    otp_entry = EmailOTP.objects.create(user=user)
-    otp = otp_entry.generate_otp()
+def send_otp_email(user_email, otp):
+    subject = "verify your email address"
+    messages = f"Your OTP code is: {otp}"
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [user_email]
+    send_mail(subject, message, email_from, recipient_list)
 
-    send_mail(
-        'Your OTP Code',
-        f'Hello {user.username},\n\nYour OTP code is: {otp}\n\nThank you!',
-        settings.EMAIL_HOST_USER,
-        [user.email],
-        fail_silently=False,
-    )
- 
+
+
 
 def verify_otp(request):
     if request.method == 'POST':
