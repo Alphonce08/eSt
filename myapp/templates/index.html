@@ -63,6 +63,12 @@
   </div>
   </div>
 
+  <div>
+    <h2 class='mt-auto mb-2'>Today<h2>
+    <span class-"animated-item">Is Great day</span>
+    <span class-"animated-item">Cool day</span>
+    <span class-"animated-item">To remember</span>
+
 
   
 <br><br>
@@ -165,6 +171,23 @@
     bold {
         font-weight: bold;
     }
+    .animated-item {
+  display: block;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  animation: BottomTotop 6s linear infinite 0s;
+}
+.animated-item:nth-child(2n+2) {
+  animation-delay: 2s;
+}
+
+.animated-item:nth-child(3n+3) {
+  animation-delay: 4s;
+}
     
     
 

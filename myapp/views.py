@@ -26,94 +26,49 @@ def payment(request):
     return render(request, 'payment.html')
 
 def forgot_password(request):
-    return render(request, 'forgot_password.html')
+    return render(request, 'login/forgot_password.html')
+
+
+
 
 def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False  # Deactivate account until verified
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            return redirect('verify_otp')
-        else:
-            messages.error(request, "Please correct the errors below.")
-    else:
-        form = RegisterForm()
+    if request.method == "POST":
+        email = request.POST['email']
+        password = request.POST['password']
+        
+        user = User.objects.create_user(username=email, email=email, password=password, is_active=False)
+        
+        otp_rec = EmailOTP.objects.create(user=user)
+        otp = otp_rec.generate_otp()
 
-    return render(request, 'register.html', {'form': form})
-
-
-     
-
-def send_otp_email(user_email, otp):
-    subject = "verify your email address"
-    messages = f"Your OTP code is: {otp}"
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [user_email]
-    send_mail(subject, message, email_from, recipient_list)
-
-
+        send_mail(
+            subject="Your OTP Code",
+            message=f"Your OTP is {otp}. It expires in 5 minutes.",
+            from_email='tkip1953@gmail.com',
+            recipient_list=[email],
+        )
+        return redirect("verify_otp")
+    return render(request, "register.html")
 
 
 def verify_otp(request):
-    if request.method == 'POST':
-        otp = request.POST['otp']
-        user_id = request.session.get('user_id')
+    if request.method == "POST":
+        email = request.POST['email']
+        code = request.POST['otp']
 
-        if not user_id:
-            messages.error(request, "Session expired. Please register again.")
-            return redirect('register')
-
-        user = User.objects.get(id=user_id)
+        user = User.objects.get(email=email)
         otp_entry = EmailOTP.objects.get(user=user)
 
-        if otp_entry.otp == otp:
+        if not otp_entry.is_expired() and otp_entry.otp == code:
             user.is_active = True
             user.save()
-            messages.success(request, "Your email has been verified! You can now log in.")
-            return redirect('login')
+            return redirect("login")
         else:
-            messages.error(request, "Invalid OTP. Please try again.")
-            return redirect('verify_otp')
+            return render(request, "verify.html", {"error": "Invalid or expired OTP"})
 
-    return render(request, 'verify_otp.html')
+    return render(request, "verify_otp.html")
 
 
-# def register(request):
-#     if request.method == 'POST':
-#         form = Register(request.POST)
-#         if form.is_valid():
-#             # Process the form data (e.g., save to database)
-#             return redirect('index')  # Redirect to a success page
-#     else:
-#         form = Register()
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         email = request.POST.get('email')
-#         password = request.POST.get('password')
-
-#         # Generate a random OTP
-#         otp = random.randint(100000, 999999)
-
-#         # Send OTP to the user's email
-#         subject = 'Your OTP Code'
-#         message = f'Hello {username},\n\nYour OTP code is: {otp}\n\nThank you!'
-#         email_from = settings.EMAIL_HOST_USER
-#         recipient_list = [email]
-
-#         try:
-#             send_mail(subject, message, email_from, recipient_list)
-#             messages.success(request, f'OTP has been sent to {email}.')
-#         except Exception as e:
-#             messages.error(request, f'Error sending email: {e}')
-
-#          # Here you can save the user data and OTP to the database if needed
-
-#          # Redirect to a page where the user can enter the OTP (not implemented here)
-           
-#     return render(request, 'register.html', {'form': form})
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')

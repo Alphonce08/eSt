@@ -1,78 +1,81 @@
 
-  {% include 'base.html' %}
- {% block content %}
-{% load static %}
 
-<body>
-    <!DOCTYPE html>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Register</title>
+  <meta charset="UTF-8">
+  <title>Sign Up - Wisoft</title>
 </head>
 <body>
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: red;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
+  <div class="container">
+    <h1>WiSoft</h1>
+    <h3>Create a new account</h3>
     <form method="POST">
-        {% csrf_token %}
-        
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <h2 class="mb-4">Register Here</h2>
-          <form method="POST" action="">
-            
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username" required>
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="text" class="form-control" id="Email" name="Email" required>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-                <div class="mb-3">
-                <label for="confirm_password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-            </div>
-            </div>
-
+      {% csrf_token %}
+      <form>
+      <input type="text" name="Username" placeholder="Username" required>
+      <input type="email" name="email" placeholder="Email address" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="password" name="confirm" placeholder="Confirm password" required>
+      <button type="submit">Sign Up</button>
     </form>
+    <div class="footer">
+      <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </div>
+  </div>
+</form>
 </body>
 </html>
 
-        
-</body>
-</html>
-{% endblock %}
-{% include 'footer.html' %}
 
 <style>
-     body {
-        background: linear-gradient; white, (#1b0c28, #300b26);
-        font-family: Arial, sans-serif;
-        margin: 60px;
-    
+    body {
+      background-color: #f0f2f5;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-     
-    .form-label {
-        padding-top: 10px;
-        margin-left: 230px;
+    .container {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 360px;
+      text-align: center;
     }
-    .btn {
-        margin-top: 35px;
-        width: 20%;
-        margin-left: 40px;
+    h1 {
+      color: #1877f2;
+      margin-bottom: 1rem;
     }
-    .input {
-        text-align: center;
-
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
     }
-</style>
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1877f2;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #166fe5;
+    }
+    .footer {
+      margin-top: 1rem;
+      font-size: 0.9em;
+    }
+    .footer a {
+      color: #1877f2;
+      text-decoration: none;
+    }
+  </style>
