@@ -26,7 +26,7 @@ def payment(request):
     return render(request, 'payment.html')
 
 def forgot_password(request):
-    return render(request, 'login/forgot_password.html')
+    return render(request, 'forgot_password.html')
 
 
 
@@ -42,7 +42,7 @@ def register(request):
         otp = otp_rec.generate_otp()
 
         send_mail(
-            subject="Your OTP Code",
+            subject="Your OTP code",
             message=f"Your OTP is {otp}. It expires in 5 minutes.",
             from_email='tkip1953@gmail.com',
             recipient_list=[email],
@@ -64,7 +64,7 @@ def verify_otp(request):
             user.save()
             return redirect("login")
         else:
-            return render(request, "verify.html", {"error": "Invalid or expired OTP"})
+            return render(request, "verify_otp.html", {"error": "Invalid or expired OTP"})
 
     return render(request, "verify_otp.html")
 

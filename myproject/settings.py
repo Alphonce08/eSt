@@ -150,3 +150,10 @@ EMAIL_HOST_PASSWORD = 'stby jetg ouet gdee'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # You can also set other email settings as needed
 
+#payment
+MPESA_ENV = 'sandbox'  # or 'production'
+MPESA_CONSUMER_KEY = 'vylF5hf6UAKwVfs9piyqNtvX6J5j70dAu0p6xoHMAkMJ9iSI'
+MPESA_CONSUMER_SECRET = 'SYpAlwXqJtHAIvCNXRLD4MuNFGTlInsxfjJGn38UM6sLGkVaPboTea1Kahp42HFS'
+MPESA_SHORTCODE = '174379'  # test shortcode
+MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919'
+MPESA_CALLBACK_URL = 'https://yourdomain.com/payment/callback/'

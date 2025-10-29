@@ -1,31 +1,31 @@
-<div class="login-wrapper" aria-live="polite">
-  <div class="login-container" role="form" aria-labelledby="loginTitle">
-    <h2 id="loginTitle">Log in</h2>
+<div class="payment-wrapper" aria-live="polite">
+  <div class="payment-container" role="form" aria-labelledby="loginTitle">
+    <h1>WiSoft</h1>
+    <h2 id="PaymentTitle">Payment</h2>
 
-    <form id="loginForm" autocomplete="on">
-      <div class="input-group">
-        <label class="sr-only" for="email">Email or phone</label>
-        <input id="email" name="email" type="text" placeholder="Email or phone" required>
-      </div>
+    <form id="paymenForm" autocomplete="on">
+      
 
       <div class="input-group">
-        <label class="sr-only" for="pass">Password</label>
-        <input id="pass" name="password" type="password" placeholder="Password" required>
+        <label class="sr-only" for="pass">Phone Number</label>
+        <input id="number" name="number" type="number" placeholder="Phone Number" required>
       </div>
 
-      <button type="submit" class="fb-btn">Log In</button>
+      <button type="submit" class="fb-btn">Pay</button>
 
-      <div class="links-row">
-        <a href="#" class="forgot">Forgotten password?</a>
-      </div>
+      
     </form>
   </div>
 </div>
 
 
 <style>
-    /* Center wrapper (full-viewport) */
-.login-wrapper {
+  h1 {
+    color: #1877f2;
+    margin-bottom: 1rem;
+  }
+  /* Center wrapper (full-viewport) */
+.payment-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,8 +35,8 @@
 }
 
 /* Container keeps things compact (not full page) */
-.login-container {
-  width: 360px;               /* same approximate width as Facebook form */
+.payment-container {
+  width: 360px;              
   padding: 28px;
   background: white;
   border-radius: 8px;
@@ -45,7 +45,7 @@
 }
 
 /* Title */
-.login-container h2 {
+.payment-container h2 {
   margin: 0 0 14px;
   font-size: 20px;
   color: #1c1e21;
